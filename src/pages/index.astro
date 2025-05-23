@@ -21,200 +21,168 @@ import img17 from '../assets/img/17.jpg';
 import img18 from '../assets/img/18.jpg';
 import img19 from '../assets/img/19.jpg';
 import img20 from '../assets/img/20.jpg';
+import img21 from '../assets/img/21.jpg';
+import img22 from '../assets/img/22.jpg';
+import img23 from '../assets/img/23.jpg';
+import img24 from '../assets/img/24.jpg';
+import img25 from '../assets/img/25.jpg';
+import img26 from '../assets/img/26.jpg';
+import img27 from '../assets/img/27.jpg';
+import img28 from '../assets/img/28.jpg';
+import img29 from '../assets/img/29.jpg';
+import img30 from '../assets/img/30.jpg';
 ---
-
 <Layout>
-  <div class="w-full bg-[#0b0704]">
-    <header class="fixed top-0 text-white left-0 w-full z-50 py-4 px-8">
-    </header>
-    <div class="grid sm:grid-cols-8 grid-cols-4 sm:grid-rows-20 gap-2 overflow-hidden">
-      <div class="elem col-span-1 row-span-1" style="--r: 1; --c: 3;">
-        <Image src={img1} alt="Portfolio image 1" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 1; --c: 7;">
-        <Image src={img2} alt="Portfolio image 2" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 2; --c: 2;">
-        <Image src={img3} alt="Portfolio image 3" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 2; --c: 6;">
-        <Image src={img4} alt="Portfolio image 4" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 3; --c: 4;">
-        <Image src={img5} alt="Portfolio image 5" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 3; --c: 8;">
-        <Image src={img6} alt="Portfolio image 6" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 4; --c: 1;">
-        <Image src={img7} alt="Portfolio image 7" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 4; --c: 5;">
-        <Image src={img8} alt="Portfolio image 8" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 5; --c: 3;">
-        <Image src={img9} alt="Portfolio image 9" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 5; --c: 7;">
-        <Image src={img10} alt="Portfolio image 10" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 6; --c: 2;">
-        <Image src={img11} alt="Portfolio image 11" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 6; --c: 6;">
-        <Image src={img12} alt="Portfolio image 12" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 7; --c: 4;">
-        <Image src={img13} alt="Portfolio image 13" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 7; --c: 8;">
-        <Image src={img14} alt="Portfolio image 14" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 8; --c: 1;">
-        <Image src={img15} alt="Portfolio image 15" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 8; --c: 5;">
-        <Image src={img16} alt="Portfolio image 16" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 9; --c: 3;">
-        <Image src={img17} alt="Portfolio image 17" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 9; --c: 7;">
-        <Image src={img18} alt="Portfolio image 18" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 10; --c: 2;">
-        <Image src={img19} alt="Portfolio image 19" width={400} height={400} />
-      </div>
-      <div class="elem col-span-1 row-span-1" style="--r: 10; --c: 6;">
-        <Image src={img20} alt="Portfolio image 20" width={400} height={400} />
-      </div>
-    </div>
+  <div class="w-full bg-[#0b0704] relative">
 
-    <div
-      class="drop-shadow-md fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white"
-    >
-      <h1
-        class="text-7xl text-center sm:text-8xl mb-4 tracking-tighter opacity-85 backdrop-blur-xl inter"
-      >
-        Mahraib Fatima.
-      </h1>
-      <h2 class="text-4xl text-center sm:text-5xl opacity-85 backdrop-blur-xl">こんにちは</h2>
+  <div class="drop-shadow-md fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white pointer-events-none">
+      <h1 class="text-7xl sm:text-8xl mb-4 tracking-tighter opacity-85">Mahraib Fatima.</h1>
     </div>
+    <div class="floating-grid">
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img1} alt="Portfolio image 1" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img2} alt="Portfolio image 2" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img3} alt="Portfolio image 3" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img4} alt="Portfolio image 4" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img5} alt="Portfolio image 5" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img6} alt="Portfolio image 6" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img7} alt="Portfolio image 7" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img8} alt="Portfolio image 8" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img9} alt="Portfolio image 9" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img10} alt="Portfolio image 10" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img11} alt="Portfolio image 11" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img12} alt="Portfolio image 12" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img13} alt="Portfolio image 13" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img14} alt="Portfolio image 14" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img15} alt="Portfolio image 15" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img16} alt="Portfolio image 16" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img17} alt="Portfolio image 17" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img18} alt="Portfolio image 18" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img19} alt="Portfolio image 19" width={400} height={400} class="floating-img" />
+      </div>
+            <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img20} alt="Portfolio image 20" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img21} alt="Portfolio image 21" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img22} alt="Portfolio image 22" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img23} alt="Portfolio image 23" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img24} alt="Portfolio image 24" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img25} alt="Portfolio image 25" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img26} alt="Portfolio image 26" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img27} alt="Portfolio image 27" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img28} alt="Portfolio image 28" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -4vh;">
+        <Image src={img29} alt="Portfolio image 29" width={400} height={400} class="floating-img" />
+      </div>
+      <div class="floating-item" style="--delay: 0.3s; --x-offset: 3vw; --y-offset: -2vh;">
+        <Image src={img30} alt="Portfolio image 30" width={400} height={400} class="floating-img" />
+      </div>
 
-    <div
-      class="w-full h-screen bg-[#d1d1d1] items-center justify-center flex mx-auto sm:py-96 py-[34rem] relative z-[999] text-center"
-    >
-      <p class="text-[#0b0704] w-3/4 text-3xl helvetica text-left leading-[2.7rem] drop-shadow-sm">
-        I'm a dedicated technologist with a deep fascination for Machine Learning and AI innovation.
-        Through my journey in computer science, I craft intelligent solutions and actively
-        contribute to open-source projects that make a difference. My passion drives me to explore
-        the frontiers of MLOps and Reinforcement Learning, turning complex challenges into elegant
-        solutions.
-      </p>
-    </div>
-  </div>
+    </div></div>
+
 </Layout>
 
 <style>
-  img {
+  /* Floating Grid Layout */
+  .floating-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .floating-item {
+    position: relative;
+    will-change: transform;
+    aspect-ratio: 1/1;
+  }
+
+  .floating-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-out;
   }
 
-  .grid > div {
-    grid-row: var(--r);
-    grid-column: var(--c);
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(var(--x-offset), var(--y-offset));
+    }
   }
 
+  .floating-item {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+
+  /* Make text unselectable and overlay properly */
+  .drop-shadow-md {
+    user-select: none;
+    z-index: 2;
+  }
+
+  /* Hide scrollbar */
   ::-webkit-scrollbar {
     display: none;
   }
-
-  html {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
 </style>
-
----
-import '../assets/global.css';
----
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Mahraib Fatima</title>
-  </head>
-  <body>
-    <div id="loading-screen" class="loading-screen">
-      <div class="loader"></div>
-    </div>
-    <slot />
-  </body>
-</html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0b0704;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s;
-  }
-
-  .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    animation: rotation 1s linear infinite;
-  }
-
-  @keyframes rotation {
-    0% { transform: rotate(0deg) }
-    100% { transform: rotate(360deg) }
-  }
-
-  .loading-screen.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-</style>
-
-<script>
-  import Lenis from 'lenis';
-
-  const lenis = new Lenis();
-
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-
-  requestAnimationFrame(raf);
-
-  // Loading screen logic
-  window.addEventListener('load', () => {
-    const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen?.classList.add('hidden');
-  });
-</script>
