@@ -1,0 +1,280 @@
+---
+// FloatingGallery.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  title?: string;
+  imageCount?: number;
+  imagePath?: string;
+  className?: string;
+}
+
+const { 
+  title = "Portfolio", 
+  imageCount = 76, 
+  imagePath = '../assets/img/',
+  className = ""
+} = Astro.props;
+
+// Dynamic import with error handling
+interface ImageEntry {
+  src: any;
+  alt: string;
+  path: string;
+  number: number;
+}
+
+let imageEntries: ImageEntry[] = [];
+try {
+  const images = import.meta.glob('../assets/img/*.jpg', { eager: true });
+  imageEntries = Object.entries(images)
+    .map(([path, module]) => ({
+      src: (module as any).default,
+      alt: `Portfolio image ${path.match(/(\d+)\.jpg$/)?.[1] || ''}`,
+      path,
+      number: parseInt(path.match(/(\d+)\.jpg$/)?.[1] || '0')
+    }))
+    .sort((a, b) => a.number - b.number)
+    .slice(0, imageCount); // Limit to specified count
+} catch (error) {
+  console.error('Error loading images:', error);
+}
+
+// Generate animation properties
+const getAnimationProps = (index: number, total: number) => ({
+  delay: (index * 0.1) % 3, // Cycle delays every 3 seconds
+  xOffset: ((index % 7) - 3) * 1.5, // Create patterns
+  yOffset: ((index % 5) - 2) * 2,
+  duration: 5 + (index % 3) // Varying durations
+});
+---
+
+<div class={`floating-gallery ${className}`}>
+  {title && (
+    <div class="gallery-title">
+      <h1>{title}</h1>
+    </div>
+  )}
+  
+  <div class="floating-grid">
+    {imageEntries.map((img, index) => {
+      const animProps = getAnimationProps(index, imageEntries.length);
+      return (
+        <div 
+          class="floating-item" 
+          style={`
+            --delay: ${animProps.delay}s; 
+            --x-offset: ${animProps.xOffset}vw; 
+            --y-offset: ${animProps.yOffset}vh;
+            --duration: ${animProps.duration}s;
+          `}
+        >
+          <Image 
+            src={img.src} 
+            alt={img.alt} 
+            width={400} 
+            height={400} 
+            class="floating-img clickable-img"
+            loading={index < 10 ? "eager" : "lazy"}
+          />
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Modal for displaying clicked images -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="caption"></div>
+  </div>
+</div>
+
+<style>
+  .floating-gallery {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: #0b0704;
+  }
+
+  .gallery-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .gallery-title h1 {
+    font-size: clamp(3rem, 8vw, 8rem);
+    color: white;
+    opacity: 0.85;
+    letter-spacing: -0.05em;
+    user-select: none;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  .floating-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 45vw), 1fr));
+    gap: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(1rem, 4vw, 2rem);
+    position: relative;
+    z-index: 1;
+  }
+
+  .floating-item {
+    position: relative;
+    aspect-ratio: 1;
+    will-change: transform;
+    animation: float var(--duration, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .floating-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .clickable-img {
+    cursor: pointer;
+  }
+
+  .clickable-img:hover {
+    opacity: 0.9;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(calc(var(--x-offset) * 0.5), calc(var(--y-offset) * 0.3)) rotate(0.5deg); }
+    50% { transform: translate(var(--x-offset), var(--y-offset)) rotate(-0.5deg); }
+    75% { transform: translate(calc(var(--x-offset) * 0.3), calc(var(--y-offset) * 0.7)) rotate(0.3deg); }
+  }
+
+  .floating-item:hover .floating-img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-item {
+      animation: none;
+    }
+  }
+
+  ::-webkit-scrollbar { display: none; }
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+  }
+
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+
+<script>
+  // Modal functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage') as HTMLImageElement;
+    const caption = document.getElementById('caption');
+    const closeBtn = document.querySelector('.close');
+
+    if (!modal || !modalImg || !caption || !closeBtn) return;
+
+    // Add click event listeners to all clickable images
+    document.querySelectorAll('.clickable-img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        const target = e.target as HTMLImageElement;
+        modal.style.display = 'block';
+        modalImg.src = target.src; // Use the actual src attribute
+        caption.innerHTML = target.alt || '';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+    });
+
+    // Close modal when clicking the X
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  });
+</script>
